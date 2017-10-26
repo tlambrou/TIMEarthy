@@ -1,5 +1,6 @@
 export const INCREMENT = "INCREMENT"
 export const DECREMENT = "DECREMENT"
+export const RESET_COUNT = "RESET_COUNT"
 
 export const incrementCounter = () => {
   return {
@@ -10,5 +11,11 @@ export const incrementCounter = () => {
 export const decrementCounter = () => {
   return {
     type: DECREMENT
+  }
+}
+
+export const resetCounter = () => {
+  return {
+    type: RESET_COUNT
   }
 }

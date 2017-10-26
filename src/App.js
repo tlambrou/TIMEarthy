@@ -8,12 +8,13 @@ import './App.css'
 class App extends Component {
   render() {
     return (
-      <div className="App">
-
-        <Provider store={createStore(reducers)}>
+      <Provider store={createStore(reducers)}>
+        <div className="App">
           <Counter />
-        </Provider>
-      </div>
+          <Counter />
+          <Counter />
+        </div>
+      </Provider>
     );
   }
 }
