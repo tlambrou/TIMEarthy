@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { incrementCounter, decrementCounter, resetCounter } from '../actions';
+import { incrementCounter, decrementCounter, resetCounter, incrementBy } from '../actions';
 
 class Counter extends Component {
 
@@ -17,6 +17,9 @@ class Counter extends Component {
       <button onClick={() => {
         this.props.resetCounter()
       }}>Reset</button>
+      <button onClick={() => {
+        this.props.incrementBy()
+      }}>+7</button>
       </div>
     );
   }
@@ -31,6 +34,7 @@ export default connect(
   {
     incrementCounter,
     decrementCounter,
-    resetCounter
+    resetCounter,
+    incrementBy
   }
 )(Counter)
