@@ -1,15 +1,33 @@
-import { INCREMENT, DECREMENT, RESET_COUNT, INCREMENT_BY } from '../actions'
+import { INCREMENT, DECREMENT, RESET_COUNT, INCREMENT_BY, ADD_COUNTER } from '../actions'
 
-const counterReducer = (state = 0, action) => {
+const counterReducer = (state=[], action) => {
   switch (action.type) {
     case INCREMENT:
-      return state += 1
+      var newState = [...state]
+      console.log(action.payload)
+      newState[action.payload.index] += 1
+      return newState
+
     case DECREMENT:
-      return state -= 1
+      var newState = [...state]
+      newState[action.payload.index] -= 1
+      return newState
+
     case RESET_COUNT:
-      return state = 0
+      var newState = [...state]
+      newState[action.payload.index] = 0
+      console.log(action.payload)
+      return newState
+
     case INCREMENT_BY:
-      return state += action.payload
+      var newState = [...state]
+      console.log(action.payload)
+      newState[action.payload.index] += action.payload.num
+      return newState
+
+    case ADD_COUNTER:
+      return [...state, 0]
+
     default:
       return state
   }

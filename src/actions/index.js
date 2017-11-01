@@ -2,28 +2,47 @@ export const INCREMENT = "INCREMENT"
 export const DECREMENT = "DECREMENT"
 export const RESET_COUNT = "RESET_COUNT"
 export const INCREMENT_BY = "INCREMENT_BY"
+export const ADD_COUNTER = "ADD_COUNTER"
 
-export const incrementCounter = () => {
+export const incrementCounter = (index = 0) => {
   return {
-    type: INCREMENT
+    type: INCREMENT,
+    payload: {
+      index: index
+    }
   }
 }
 
-export const decrementCounter = () => {
+export const decrementCounter = (index = 0) => {
   return {
-    type: DECREMENT
+    type: DECREMENT,
+    payload: {
+      index: index
+    }
   }
 }
 
-export const resetCounter = () => {
+export const resetCounter = (index = 0) => {
   return {
-    type: RESET_COUNT
+    type: RESET_COUNT,
+    payload: {
+      index: index
+    }
   }
 }
 
-export const incrementBy = (num = 7) => {
+export const incrementBy = (index = 0, num = 7) => {
   return {
     type: INCREMENT_BY,
-    payload: num
+    payload: {
+      index: index,
+      num: num
+    }
+  }
+}
+
+export const addCounter = () => {
+  return {
+    type: ADD_COUNTER
   }
 }
