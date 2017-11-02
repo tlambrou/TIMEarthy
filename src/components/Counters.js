@@ -1,31 +1,48 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { incrementCounter, decrementCounter, resetCounter, incrementBy } from '../actions';
+import { incrementCounter, decrementCounter, resetCounter, incrementBy, addCounter, removeCounter } from '../actions';
 import Counter from './Counter'
+import CounterCounter from './CounterCounter'
 
 class Counters extends Component {
 
   drawCounters() {
-    this.props.counters.map((count, index) => {
-      return <Counter
-            key={index}
-            index={index}
-            count={count}
-            incrementCounter={() => incrementCounter(index)}
-            decrementCounter={() => decrementCounter(index)}
-            resetCounter={() => resetCounter()}
-            incrementBy={() => incrementBy(7)}
-        />
+    return this.props.counters.map((count, index) => {
+      return (
+        <Counter
+          key={index}
+          index={index}
+          count={count}
+          incrementCounter={() => this.props.incrementCounter(index)}
+          decrementCounter={() => this.props.decrementCounter(index)}
+          resetCounter={() => this.props.resetCounter(index)}
+          incrementBy={() => this.props.incrementBy(index, 7)}
+          removeCounter={() => this.props.removeCounter(index)}
+          />
+      )
     })
   }
 
   render() {
     return (
-      <div>
-        <button onClick={}>Create Counter</button>
-        {this.drawCounters()}
+      <div className="container">
+        <div className="info">
+          <div className="icon icon-danger">
+            <i className="nc-icon nc-time-alarm"></i>
+          </div>
+          <div className="description">
+            <CounterCounter count={ this.props.counters.length ? this.props.counters.length : 0 } />
+            <button type="button" className="btn btn-magnify" onClick={() => this.props.addCounter() }>
+              <i className="nc-icon nc-simple-add">
+              </i> Create Counter
+            </button>
+          </div>
+        </div>
+        <div className="row">
+          {this.drawCounters()}
+        </div>
       </div>
-    );
+    )
   }
 }
 
@@ -39,6 +56,8 @@ export default connect(
     incrementCounter,
     decrementCounter,
     resetCounter,
-    incrementBy
+    incrementBy,
+    addCounter,
+    removeCounter
   }
 )(Counters)

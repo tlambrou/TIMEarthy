@@ -2,17 +2,17 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import React, { Component } from 'react'
 import reducers from './reducers'
-import Counter from './components/Counter'
+import Counters from './components/Counters'
 import './App.css'
+
+var store = createStore(reducers)
 
 class App extends Component {
   render() {
     return (
-      <Provider store={createStore(reducers)}>
+      <Provider store={store}>
         <div className="App">
-          <Counter />
-          <Counter />
-          <Counter />
+          <Counters />
         </div>
       </Provider>
     );
