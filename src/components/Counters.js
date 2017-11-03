@@ -32,7 +32,7 @@ class Counters extends Component {
           </div>
           <div className="description">
             <CounterCounter count={ this.props.counters.length ? this.props.counters.length : 0 } />
-            <button type="button" className="btn btn-magnify" onClick={() => this.props.addCounter() }>
+            <button type="button" className="btn btn-magnify btn-round" onClick={() => this.props.addCounter() }>
               <i className="nc-icon nc-simple-add">
               </i> Create Counter
             </button>

@@ -7,3 +7,7 @@ body {
 .btn {
   margin: 1px;
 }
+
+.bg-dark {
+  background-color: #333;
+}
