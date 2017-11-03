@@ -1,23 +1,25 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { incrementCounter, decrementCounter, resetCounter, incrementBy, addCounter, removeCounter } from '../actions';
+import { incrementCounter, decrementCounter, resetCounter, incrementBy, addCounter, removeCounter, changeLabel } from '../actions';
 import Counter from './Counter'
 import CounterCounter from './CounterCounter'
 
 class Counters extends Component {
 
   drawCounters() {
-    return this.props.counters.map((count, index) => {
+    return this.props.counters.map((data, index) => {
       return (
         <Counter
           key={index}
           index={index}
-          count={count}
+          count={data.count}
+          label={data.label}
           incrementCounter={() => this.props.incrementCounter(index)}
           decrementCounter={() => this.props.decrementCounter(index)}
           resetCounter={() => this.props.resetCounter(index)}
           incrementBy={() => this.props.incrementBy(index, 7)}
           removeCounter={() => this.props.removeCounter(index)}
+          changeLabel={ this.props.changeLabel }
           />
       )
     })
@@ -58,6 +60,7 @@ export default connect(
     resetCounter,
     incrementBy,
     addCounter,
-    removeCounter
+    removeCounter,
+    changeLabel
   }
 )(Counters)

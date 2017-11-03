@@ -1,38 +1,33 @@
-import { INCREMENT, DECREMENT, RESET_COUNT, INCREMENT_BY, ADD_COUNTER, REMOVER_COUNTER } from '../actions'
+import { INCREMENT, DECREMENT, RESET_COUNT, INCREMENT_BY, ADD_COUNTER, REMOVER_COUNTER, CHANGE_LABEL } from '../actions'
 
 const counterReducer = (state=[], action) => {
+  const newState = [...state]
   switch (action.type) {
     case INCREMENT:
-      var newState = [...state]
-      newState[action.payload.index] += 1
+      newState[action.payload.index].count += 1
       return newState
-      break
     case DECREMENT:
-      var newState = [...state]
-      newState[action.payload.index] -= 1
+      newState[action.payload.index].count -= 1
       return newState
-      break
     case RESET_COUNT:
-      var newState = [...state]
-      newState[action.payload.index] = 0
+      newState[action.payload.index].count = 0
       return newState
-      break
     case INCREMENT_BY:
-      var newState = [...state]
-      newState[action.payload.index] += action.payload.num
+      newState[action.payload.index].count += action.payload.num
       return newState
-      break
     case ADD_COUNTER:
-      return [...state, 0]
-      break
+      const index = state.length + 1
+      const labelText = "Counter " + index.toString()
+      const newCounter = { count: 0, label: labelText }
+      return [...state, newCounter]
     case REMOVER_COUNTER:
-      newState = [...state]
       newState.splice(action.payload.index, 1)
       return newState
-      break
+    case CHANGE_LABEL:
+      newState[action.payload.index].label = action.payload.label
+      return newState
     default:
       return state
-      break
   }
 }
 
