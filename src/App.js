@@ -5,7 +5,13 @@ import reducers from './reducers'
 import Counters from './components/Counters'
 import './App.css'
 
-var store = createStore(reducers)
+import { incrementCounter, incrementAll } from './actions';
+
+const store = createStore(reducers)
+
+setInterval(() => {
+  store.dispatch( incrementAll() ) // ...
+}, 1000)
 
 class App extends Component {
   render() {

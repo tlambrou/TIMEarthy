@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT, RESET_COUNT, INCREMENT_BY, ADD_COUNTER, REMOVER_COUNTER, CHANGE_LABEL } from '../actions'
+import { INCREMENT, DECREMENT, RESET_COUNT, INCREMENT_BY, ADD_COUNTER, REMOVER_COUNTER, CHANGE_LABEL, INCREMENT_ALL } from '../actions'
 
 const counterReducer = (state=[], action) => {
   const newState = [...state]
@@ -26,6 +26,14 @@ const counterReducer = (state=[], action) => {
     case CHANGE_LABEL:
       newState[action.payload.index].label = action.payload.label
       return newState
+    case INCREMENT_ALL:
+        return state.map((counter) => {
+          console.log(counter.count)
+          const newCount = counter.count + 1
+          console.log(newCount)
+          const newState = { count: newCount, label: counter.label}
+          return newState
+        })
     default:
       return state
   }

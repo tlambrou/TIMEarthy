@@ -5,7 +5,7 @@ export const INCREMENT_BY = "INCREMENT_BY"
 export const ADD_COUNTER = "ADD_COUNTER"
 export const REMOVER_COUNTER = "REMOVER_COUNTER"
 export const CHANGE_LABEL = "CHANGE_LABEL"
-
+export const INCREMENT_ALL = "INCREMENT_ALL"
 
 export const incrementCounter = (index = 0) => {
   return {
@@ -66,5 +66,11 @@ export const changeLabel = (index, label = "Counter") => {
       index: index,
       label: label
     }
+  }
+}
+
+export const incrementAll = () => {
+  return {
+    type: INCREMENT_ALL
   }
 }
