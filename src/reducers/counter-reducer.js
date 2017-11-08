@@ -31,7 +31,7 @@ const counterReducer = (state=[], action) => {
     case ADD_COUNTER:
       const index = state.length + 1
       const labelText = "Counter " + index.toString()
-      const newCounter = { count: 0, label: labelText, isRunning: false }
+      const newCounter = { count: 0, label: labelText, isRunning: true }
       return [...state, newCounter]
     case REMOVER_COUNTER:
       newState.splice(action.payload.index, 1)

@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 import React, { Component } from 'react'
 import reducers from './reducers'
 import Counters from './components/Counters'
+import Header from './components/Header'
 import './App.css'
 
 import { incrementCounter, incrementAll } from './actions';
@@ -18,6 +19,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
+          <Header />
           <Counters />
         </div>
       </Provider>
