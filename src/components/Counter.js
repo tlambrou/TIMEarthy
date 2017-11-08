@@ -7,10 +7,6 @@ class Counter extends Component {
     var textArea
   }
 
-  componentDidMount() {
-
-  }
-
   textAreaAdjust() {
     this.textArea = document.getElementById('invisiform')
     console.log("scrollHeight is this: ", this.textArea)
@@ -37,6 +33,15 @@ class Counter extends Component {
     }
   }
 
+  displayStartStopButton() {
+    switch (this.props.isRunning) {
+      case true:
+        return  <button type="button" className="btn btn-magnify btn-round btn-just-icon" onClick={ () => {this.props.stopCounter()} }><i className="nc-icon nc-button-pause"></i></button>
+      case false:
+        return <button type="button" className="btn btn-magnify btn-round btn-just-icon" onClick={ () => {this.props.startCounter()} }><i className="nc-icon nc-button-play"></i></button>
+    }
+  }
+
   render() {
 
     var styles = {
@@ -46,7 +51,7 @@ class Counter extends Component {
     }
 
     return (
-      <div className="col-lg-3">
+      <div className="col-lg-4">
         <div className="card card-with-shadow" data-color="blue" style={styles.cardColor}>
           <div className="card-body">
             <textarea id={`invisiform-${this.props.index}`} onChange={(e) => {this.props.changeLabel(this.props.index, e.target.value)}} type="text" className="card-category form-control invisiform" placeholder={this.props.label}/>
@@ -56,6 +61,7 @@ class Counter extends Component {
             </div>
           </div>
           <div className="card-footer">
+            {this.displayStartStopButton()}
             <button type="button" className="btn btn-magnify btn-round btn-just-icon" onClick={ () => {this.props.incrementCounter()} }><i className="nc-icon nc-minimal-up"></i></button>
             <button type="button" className="btn btn-magnify btn-round btn-just-icon" onClick={ () => {this.props.decrementCounter()} }><i className="nc-icon nc-minimal-down"></i></button>
             <button type="button" className="btn btn-magnify btn-round btn-just-icon" onClick={ () => {this.props.resetCounter()} }><i className="nc-icon nc-refresh-69"></i></button>

@@ -6,6 +6,9 @@ export const ADD_COUNTER = "ADD_COUNTER"
 export const REMOVER_COUNTER = "REMOVER_COUNTER"
 export const CHANGE_LABEL = "CHANGE_LABEL"
 export const INCREMENT_ALL = "INCREMENT_ALL"
+export const START_COUNTER = "START_COUNTER"
+export const STOP_COUNTER = "STOP_COUNTER"
+
 
 export const incrementCounter = (index = 0) => {
   return {
@@ -72,5 +75,19 @@ export const changeLabel = (index, label = "Counter") => {
 export const incrementAll = () => {
   return {
     type: INCREMENT_ALL
+  }
+}
+
+export const startCounter = (index) => {
+  return {
+    type: START_COUNTER,
+    payload: { index }
+  }
+}
+
+export const stopCounter = (index) => {
+  return {
+    type: STOP_COUNTER,
+    payload: { index }
   }
 }

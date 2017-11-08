@@ -1,6 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { incrementCounter, decrementCounter, resetCounter, incrementBy, addCounter, removeCounter, changeLabel } from '../actions';
+import {
+  incrementCounter,
+  decrementCounter,
+  resetCounter,
+  incrementBy,
+  addCounter,
+  removeCounter,
+  changeLabel,
+  startCounter,
+  stopCounter
+} from '../actions';
 import Counter from './Counter'
 import CounterCounter from './CounterCounter'
 
@@ -14,12 +24,15 @@ class Counters extends Component {
           index={index}
           count={data.count}
           label={data.label}
+          isRunning={data.isRunning}
           incrementCounter={() => this.props.incrementCounter(index)}
           decrementCounter={() => this.props.decrementCounter(index)}
           resetCounter={() => this.props.resetCounter(index)}
           incrementBy={() => this.props.incrementBy(index, 7)}
           removeCounter={() => this.props.removeCounter(index)}
           changeLabel={ this.props.changeLabel }
+          startCounter={ () => this.props.startCounter(index)}
+          stopCounter={ () => this.props.stopCounter(index)}
           />
       )
     })
@@ -61,6 +74,8 @@ export default connect(
     incrementBy,
     addCounter,
     removeCounter,
-    changeLabel
+    changeLabel,
+    startCounter,
+    stopCounter
   }
 )(Counters)
